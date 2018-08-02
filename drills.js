@@ -109,8 +109,6 @@ const qSort = (array, start, end) => {
   start = start === undefined ? 0 : start;
   end = end === undefined ? array.length : end;
 
-
-
   if (start >= end) {
     return array;
   }
@@ -136,14 +134,13 @@ const partition = (array, start, end) => {
 };
 
 const swap = (array, i, j) => {
-    count++;
   const temp = array[i];
   array[i] = array[j];
   array[j] = temp;
 };
 
-qSort(arr);
-console.log(count);
+// qSort(arr);
+// console.log(count);
 
 const mSort = array => {
   count++;
@@ -188,13 +185,28 @@ const merge = (left, right, array) => {
 // console.log(count);
 
 function bucketSort(arr) {
-    let sortedArray = [];  
-    
-    for (let i = 0; i < arr.length; i++) {
-       sortedArray[arr[i]] = arr[i]; 
-    }
-    
-    return sortedArray.filter(item => item !== undefined);
+  let sortedArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    sortedArray[arr[i]] = arr[i];
   }
 
-  console.log(bucketSort([23, 12, 4, 1, 6, 10, 15, 18]))
+  return sortedArray.filter(item => item !== undefined);
+}
+
+// console.log(bucketSort([23, 12, 4, 1, 6, 10, 15, 18]));
+
+const arrShuffle = arr => {
+  let currIndex = arr.length;
+
+  while (0 !== currIndex) {
+    let ranIndex = Math.floor(Math.random() * currIndex);
+    currIndex--;
+    const temp = arr[currIndex];
+    arr[currIndex] = arr[ranIndex];
+    arr[ranIndex] = temp;
+  }
+  return arr;
+};
+
+console.log(arrShuffle(arr));
